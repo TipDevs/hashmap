@@ -28,6 +28,16 @@ class HashMap {
     }
     this.buckets[index].push([key, value]);
   }
+  get(key) {
+    //takes one argument as a key and
+    // returns the value that is assigned to this key
+    let index = this.hash(key);
+    for (let bucket of this.buckets[index]) {
+      if (bucket[0] === key) return bucket[1];
+    }
+
+    return null;
+  }
 }
 
 const test = new HashMap();

@@ -45,6 +45,16 @@ class HashMap {
     }
     return false;
   }
+  remove(key) {
+    let index = this.hash(key);
+    for (let bucket of this.buckets[index]) {
+      if (bucket[0] === key) {
+        this.buckets[index] = [];
+        return true;
+      }
+    }
+    return false;
+  }
 }
 
 const test = new HashMap();

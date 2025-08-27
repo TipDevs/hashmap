@@ -27,6 +27,9 @@ class HashMap {
       }
     }
     this.buckets[index].push({ key, value });
+    if (this.length() / this.capacity > this.loadFactor) {
+      this.resize();
+    }
   }
   get(key) {
     //takes one argument as a key and
@@ -90,7 +93,7 @@ class HashMap {
     }
     return valueTray;
   }
-    entries() {
+  entries() {
     let i = 0;
     let entriesTray = [];
     for (let bucket of this.buckets) {
@@ -100,6 +103,17 @@ class HashMap {
       }
     }
     return entriesTray;
+  }
+  resize() {
+    console.log("Resizing.....");
+    let oldBuckets = this.buckets;
+    this.capacity *= 2;
+    this.buckets = Array.from({ length: this.capacity }, () => []);
+    for (let bucket of oldBuckets) {
+      for (let pair of bucket) {
+        this.set(pair.key, pair.value);
+      }
+    }
   }
 }
 

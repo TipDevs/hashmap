@@ -33,7 +33,7 @@ class HashMap {
     // returns the value that is assigned to this key
     let index = this.hash(key);
     for (let bucket of this.buckets[index]) {
-      if (bucket[0] === key) return bucket[1];
+      if (bucket.key === key) return bucket.value;
     }
 
     return null;
@@ -41,14 +41,14 @@ class HashMap {
   has(key) {
     let index = this.hash(key);
     for (let bucket of this.buckets[index]) {
-      if (bucket[0] === key) return true;
+      if (bucket.key === key) return true;
     }
     return false;
   }
   remove(key) {
     let index = this.hash(key);
     for (let bucket of this.buckets[index]) {
-      if (bucket[0] === key) {
+      if (bucket.key === key) {
         this.buckets[index] = [];
         return true;
       }
@@ -59,7 +59,7 @@ class HashMap {
     let length = 0;
     for (let bucket of this.buckets) {
       if (bucket.length === 0) continue;
-      length++;
+      length += bucket.length;
     }
     return length;
   }

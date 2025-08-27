@@ -79,6 +79,17 @@ class HashMap {
     }
     return keyTray;
   }
+  values() {
+    let i = 0;
+    let valueTray = [];
+    for (let bucket of this.buckets) {
+      if (bucket.length === 0) continue;
+      for (let pair of bucket) {
+        valueTray.push(pair.value);
+      }
+    }
+    return valueTray;
+  }
 }
 
 const test = new HashMap();

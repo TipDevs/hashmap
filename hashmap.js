@@ -90,6 +90,17 @@ class HashMap {
     }
     return valueTray;
   }
+    entries() {
+    let i = 0;
+    let entriesTray = [];
+    for (let bucket of this.buckets) {
+      if (bucket.length === 0) continue;
+      for (let pair of bucket) {
+        entriesTray.push(pair);
+      }
+    }
+    return entriesTray;
+  }
 }
 
 const test = new HashMap();

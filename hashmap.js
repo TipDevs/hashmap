@@ -19,36 +19,36 @@ class HashMap {
     // the first is a key, and
     // the second is a value that is assigned to this key.
     let index = this.hash(key);
-    for (let bucket of this.buckets[index]) {
+    for (let pair of this.buckets[index]) {
       // If a key already exists, then the old value is overwritten
-      if (bucket.key === key) {
-        bucket.value = value;
+      if (pair.key === key) {
+        pair.value = value;
         return;
       }
     }
-      this.buckets[index].push({ key, value });
+    this.buckets[index].push({ key, value });
   }
   get(key) {
     //takes one argument as a key and
     // returns the value that is assigned to this key
     let index = this.hash(key);
-    for (let bucket of this.buckets[index]) {
-      if (bucket.key === key) return bucket.value;
+    for (let pair of this.buckets[index]) {
+      if (pair.key === key) return pair.value;
     }
 
     return null;
   }
   has(key) {
     let index = this.hash(key);
-    for (let bucket of this.buckets[index]) {
-      if (bucket.key === key) return true;
+    for (let pair of this.buckets[index]) {
+      if (pair.key === key) return true;
     }
     return false;
   }
   remove(key) {
     let index = this.hash(key);
-    for (let bucket of this.buckets[index]) {
-      if (bucket.key === key) {
+    for (let pair of this.buckets[index]) {
+      if (pair.key === key) {
         this.buckets[index] = [];
         return true;
       }
@@ -67,6 +67,17 @@ class HashMap {
     for (let bucket in this.buckets) {
       this.buckets[bucket] = [];
     }
+  }
+  keys() {
+    let i = 0;
+    let keyTray = [];
+    for (let bucket in this.buckets) {
+      if (this.buckets[bucket].length === 0) continue;
+      for (let pair of this.buckets[bucket]) {
+        keyTray.push(pair.key);
+      }
+    }
+    return keyTray;
   }
 }
 

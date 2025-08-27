@@ -55,6 +55,14 @@ class HashMap {
     }
     return false;
   }
+  length() {
+    let length = 0;
+    for (let bucket of this.buckets) {
+      if (bucket.length === 0) continue;
+      length++;
+    }
+    return length;
+  }
 }
 
 const test = new HashMap();

@@ -72,7 +72,6 @@ class HashMap {
     }
   }
   keys() {
-    let i = 0;
     let keyTray = [];
     for (let bucket of this.buckets) {
       if (bucket.length === 0) continue;
@@ -83,7 +82,6 @@ class HashMap {
     return keyTray;
   }
   values() {
-    let i = 0;
     let valueTray = [];
     for (let bucket of this.buckets) {
       if (bucket.length === 0) continue;
@@ -94,7 +92,6 @@ class HashMap {
     return valueTray;
   }
   entries() {
-    let i = 0;
     let entriesTray = [];
     for (let bucket of this.buckets) {
       if (bucket.length === 0) continue;

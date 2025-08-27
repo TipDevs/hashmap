@@ -63,6 +63,11 @@ class HashMap {
     }
     return length;
   }
+  clear() {
+    for (let bucket in this.buckets) {
+      this.buckets[bucket] = [];
+    }
+  }
 }
 
 const test = new HashMap();

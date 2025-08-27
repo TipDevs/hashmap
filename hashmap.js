@@ -71,9 +71,9 @@ class HashMap {
   keys() {
     let i = 0;
     let keyTray = [];
-    for (let bucket in this.buckets) {
-      if (this.buckets[bucket].length === 0) continue;
-      for (let pair of this.buckets[bucket]) {
+    for (let bucket of this.buckets) {
+      if (bucket.length === 0) continue;
+      for (let pair of bucket) {
         keyTray.push(pair.key);
       }
     }

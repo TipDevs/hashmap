@@ -21,12 +21,12 @@ class HashMap {
     let index = this.hash(key);
     for (let bucket of this.buckets[index]) {
       // If a key already exists, then the old value is overwritten
-      if (bucket[0] === key) {
-        bucket[1] = value;
+      if (bucket.key === key) {
+        bucket.value = value;
         return;
       }
     }
-    this.buckets[index].push([key, value]);
+      this.buckets[index].push({ key, value });
   }
   get(key) {
     //takes one argument as a key and

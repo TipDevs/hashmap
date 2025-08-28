@@ -41,9 +41,10 @@ class HashMap {
   }
   remove(key) {
     let index = this.#hash(key);
-    for (let pair of this.#buckets[index]) {
-      if (pair.key === key) {
-        this.#buckets[index] = [];
+    let bucket = this.#buckets[index];
+    for (let i = 0; i < bucket.length; i++) {
+      if (bucket[i].key === key) {
+        bucket[i].splice(i, 0);
         return true;
       }
     }
@@ -58,8 +59,8 @@ class HashMap {
     return length;
   }
   clear() {
-    for (let bucket in this.#buckets) {
-      this.#buckets[bucket] = [];
+    for (let bucket of this.#buckets) {
+      bucket.splice(0, bucket.length);
     }
   }
   keys() {
@@ -100,7 +101,8 @@ class HashMap {
     this.#buckets = Array.from({ length: this.#capacity }, () => []);
     for (let bucket of oldBuckets) {
       for (let pair of bucket) {
-        this.set(pair.key, pair.value);
+        let index = this.#hash(pair.key);
+        this.#buckets[index].push(pair);
       }
     }
   }

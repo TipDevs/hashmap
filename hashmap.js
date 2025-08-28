@@ -109,3 +109,25 @@ class HashMap {
 }
 
 const test = new HashMap();
+test.set("apple", "red");
+test.set("banana", "yellow");
+test.set("carrot", "orange");
+test.set("dog", "brown");
+test.set("elephant", "gray");
+test.set("frog", "green");
+console.log(test.get("carrot")); // orange
+console.log(test.get("tesla")); // null
+console.log(test.has("frog")); // true
+console.log(test.has("tesla")); // false
+console.log(test.remove("frog")); // true
+console.log(test.remove("tesla")); // false
+test.clear();
+test.set("grape", "purple");
+test.set("hat", "black");
+test.set("ice cream", "white");
+test.set("jacket", "blue");
+test.set("kite", "pink");
+test.set("lion", "golden");
+console.log(test.keys()); // ["grape", "hat", "ice cream", "jacket", "kite", "lion"]
+console.log(test.values()); // ["purple", "black", "white", "blue", "pink", "golden"]
+console.log(test.entries()); // [{ key: 'grape', value: 'purple' }, { key: 'hat', value: 'black' }, { key: 'lion', value: 'golden' }, { key: 'ice cream', value: 'white' }, { key: 'jacket', value: 'blue' }, { key: 'kite', value: 'pink' }]

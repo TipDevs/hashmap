@@ -1,7 +1,7 @@
 class HashMap {
-    #capacity = 16;
-    #loadFactor = 0.7;
-    #buckets = Array.from({ length: this.#capacity }, () => []);
+  #capacity = 16;
+  #loadFactor = 0.7;
+  #buckets = Array.from({ length: this.#capacity }, () => []);
   #hash(key) {
     let hashCode = 0;
     const primeNumber = 31;
@@ -87,7 +87,7 @@ class HashMap {
     for (let bucket of this.#buckets) {
       if (bucket.length === 0) continue;
       for (let pair of bucket) {
-          entriesTray.push({ key: pair.key, value: pair.value });
+        entriesTray.push({ key: pair.key, value: pair.value });
       }
     }
     return entriesTray;
